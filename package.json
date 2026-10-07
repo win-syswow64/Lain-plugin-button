@@ -1,0 +1,7 @@
+{
+  "name": "lain-plugin-button",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Independent QQBot button extensions for Lain-plugin"
+}
