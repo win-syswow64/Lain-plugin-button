@@ -4,6 +4,8 @@ Lain-plugin 的独立 QQBot 按钮仓库，安装位置为 Lain-plugin/plugins/b
 每个目标插件对应一个顶层扩展文件；个人自定义扩展放在 example/，支持子目录和热更新。
 未安装 requiredPlugin 指定的插件时跳过对应扩展。
 
+远程仓库：https://github.com/win-syswow64/Lain-plugin-button
+
 本目录有自己的 Git 历史，Lain-plugin 本体不跟踪这里的文件。
 修改按钮不会阻塞本体更新，两个仓库分别提交、分别更新。
 首次启动时，本体使用 resources/button.bundle 初始化按钮仓库，不依赖联网。
@@ -15,9 +17,11 @@ Lain-plugin 的独立 QQBot 按钮仓库，安装位置为 Lain-plugin/plugins/b
  git -C plugins/button add 你的按钮.js
  git -C plugins/button commit -m "修改按钮"
 
-# 设置自己的独立按钮远程；之后从这个远程更新
- git -C plugins/button remote add origin <按钮仓库Git地址>
+# 单独更新按钮库（保留个人改动；有已跟踪文件冲突时由 Git 提示）
  git -C plugins/button pull --ff-only
+
+# 如需使用自己的按钮分支，修改独立仓库的远程
+ git -C plugins/button remote set-url origin <你的按钮仓库Git地址>
 ```
 
 新按钮文件在顶层默认被忽略，可使用 git add -f 文件名.js 发布。
