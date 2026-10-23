@@ -15,3 +15,8 @@ data 是输入按钮，callback 是回调按钮，link 是网页按钮。
 
 这些是按钮扩展文件，不是 YunZai 消息插件：执行消息命令的插件仍安装到 YunZai/plugins。
 发送 #自定义按钮示例，匹配 demo.js 并显示底部按钮；回复由已有消息插件提供。
+
+`repeat-command.js.example` 提供可选的通用“+1”兜底按钮，默认不加载。
+在按钮仓库根目录运行 `cp example/repeat-command.js.example example/repeat-command.js` 即可启用。
+它只处理命令，优先级为 100000；专用按钮及优先级更高的全局按钮先匹配。
+复制后的个人文件默认忽略，模板文件由仓库跟踪。删除个人副本即可关闭。

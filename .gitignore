@@ -2,6 +2,7 @@
 *.js
 !archive-*.js
 !Atlas.js
+!22009-plugin.js
 !FanSky_Qs.js
 !GT-Manual-Plugin.js
 !Guoba-Plugin.js
@@ -11,6 +12,7 @@
 !auto-plugin.js
 !chatgpt-plugin.js
 !genshin.js
+!example.js
 !hs-qiqi-plugin.js
 !lain-plugin.js
 !miao-plugin.js
@@ -27,5 +29,6 @@
 /example/**
 !/example/README.md
 !/example/demo.js
+!/example/repeat-command.js.example
 node_modules/
 *.log

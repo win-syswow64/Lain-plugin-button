@@ -107,18 +107,19 @@ class Button {
   }
   help (){
     const button = [
-      { label: '上传深渊', callback: `/上传深渊` },
-      { label: '练度统计', callback: `/练度统计` },
-      { label: '圣遗物列表', callback: `/圣遗物列表` },
-
-      { label: '签到', callback: `/签到` },
-      { label: '体力', callback: `/体力` },
-      { label: '今日素材', callback: `/今日素材` },
-
-      { label: '更新面板', callback: `/更新面板` },
-      { label: '绑定UID', data: `/绑定` },
-      { label: '扫码绑定', callback: `/扫码绑定` },
       [
+        { label: '上传深渊', callback: `/上传深渊` },
+        { label: '练度统计', callback: `/练度统计` },
+        { label: '圣遗物列表', callback: `/圣遗物列表` },
+      ], [
+        { label: '签到', callback: `/签到` },
+        { label: '体力', callback: `/体力` },
+        { label: '今日素材', callback: `/今日素材` },
+      ], [
+        { label: '更新面板', callback: `/更新面板` },
+        { label: '绑定UID', data: `/绑定` },
+        { label: '扫码绑定', callback: `/扫码绑定` },
+      ], [
         { label: '自动签到' , link: 'https://afdian.com/a/ye3011', style: 4},
         { label: '拉窝进群' , link: 'https://qun.qq.com/qunpro/robot/qunshare?robot_uin=3889005294&robot_appid=102082668&biz_type=0', style: 4},
       ]

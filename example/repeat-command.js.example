@@ -1,0 +1,21 @@
+/**
+ * 可选的“+1”兜底按钮，整理自 button/+1.js 和 button/底线按钮.js。
+ * 复制为 example/repeat-command.js 后启用；原模板不会被加载。
+ */
+export default class RepeatCommandButtons {
+  constructor () {
+    this.plugin = {
+      name: '重复命令按钮',
+      priority: 100000,
+      rule: [{ reg: '', fnc: 'repeat' }]
+    }
+  }
+
+  repeat (e) {
+    if (Array.isArray(e.button) || (e.button && typeof e.button === 'object')) return e.button
+    const command = String(e.qqbot_button_command || e.msg || e.raw_message || '').trim()
+    if (!/^(?:[#/*%]|ww)/.test(command)) return false
+    // 保留完整命令，避免替换参数中的 #、破坏前缀或重复拼接命令。
+    return Bot.Button([{ label: '+1', callback: command }])
+  }
+}

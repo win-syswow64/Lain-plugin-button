@@ -75,17 +75,20 @@ class Button {
 
   async user(){
     const list = [
-      { label: '签到', callback: `/签到`, style: 1  },
-      { label: '体力', callback: `/体力`, style: 1  },
-      { label: '社区', callback: `/米游社原神签到`, style: 1  },
-
-      { label: `扫码绑定`, callback: `/扫码绑定`, style: 1  },
-      { label: `刷新CK`, callback: `/刷新ck`, style: 1  },
-      { label: `刷新CD`, callback: `/刷新CD`, style: 1  },
-
-      { label: `更新抽卡记录`, callback: `/更新抽卡记录`, style: 4 },
-
-      { label: `获取小助手记录`, callback: `/获取小助手记录`, style: 4 },
+      [
+        { label: '签到', callback: `/签到`, style: 1  },
+        { label: '体力', callback: `/体力`, style: 1  },
+        { label: '社区', callback: `/米游社全部签到`, style: 1  },
+      ], [
+        { label: `扫码绑定`, callback: `/扫码绑定`, style: 1  },
+        { label: `刷新CK`, callback: `/刷新ck`, style: 1  },
+        { label: `刷新CD`, callback: `/刷新CD`, style: 1  },
+      ], [
+        { label: `更新原神记录`, callback: `/更新抽卡记录`, style: 4 },
+        { label: `更新星铁记录`, callback: `/星铁更新抽卡记录`, style: 4 },
+      ], [
+        { label: `获取小助手记录`, callback: `/获取小助手记录`, style: 4 },
+      ]
     ]
     return Bot.Button(list)
   }
@@ -95,7 +98,7 @@ class Button {
       [
         { label: `签到`, callback: `/签到`, style: 1  },
         { label: `体力`, callback: `/体力` , style: 1 },
-        { label: '社区', callback: `/米游社原神签到`, style: 1  },
+        { label: '社区', callback: `/米游社全部签到`, style: 1  },
       ],[
         { label: `扫码绑定`, callback: `/扫码绑定`, style: 1  },
         { label: `刷新CK`, callback: `/刷新ck`, style: 1  },
@@ -112,7 +115,7 @@ class Button {
       [
         { label: `签到`, callback: `/签到`, style: 1 },
         { label: `体力`, callback: `/体力`, style: 1 },
-        { label: '社区', callback: `/米游社原神签到`, style: 1 },
+        { label: '社区', callback: `/米游社全部签到`, style: 1 },
       ],[
         { label: `扫码绑定`, callback: `/扫码绑定`, style: 1 },
         { label: `刷新CK`, callback: `/刷新ck`, style: 1 },
@@ -124,20 +127,8 @@ class Button {
     return Bot.Button(list)
   }
 
-  async gacha(e){
-    const list = [
-        { label: `角色记录`, callback: `/星铁角色记录`, style: 1  },
-        { label: `光锥记录`, callback: `/星铁光锥记录`, style: 1  },
-        { label: `全部记录`, callback: `/星铁全部记录`, style: 1  },
-
-        { label: `角色统计`, callback: `/星铁角色统计`, style: 1  },
-        { label: `光锥统计`, callback: `/星铁光锥统计`, style: 1  },
-        { label: `全部统计`, callback: `/星铁全部统计`, style: 1  },
-  ]
-  return Bot.Button(list)
-}
 async gacha(e){
-  const game = e.isSr ? '星铁' : ''
+  const game = e.game === 'sr' || e.isSr || /星铁/.test(e.qqbot_button_command || e.msg || '') ? '星铁' : ''
    const list = [
       [
         { label: `角色记录`, callback: `/${game}角色记录`, style: 1  },
@@ -206,7 +197,7 @@ class Button {
         priority: 1100,
         rule: [
           {
-            reg: "^#?设置全量(更新|获取)(抽卡|祈愿)记录\s*(开|关|on|off)?$",
+            reg: /^#?设置全量(更新|获取)(抽卡|祈愿)记录\s*(开|关|on|off)?$/i,
             fnc: 'setFetchFullLog'
           }
         ]
@@ -242,7 +233,7 @@ class Button {
         priority: 1100,
         rule: [
           {
-            reg: '^#(刷新|清除|clean-)(CD|cd)\s*([1-9][0-9]{8})?$',
+            reg: /^#(刷新|清除|clean-)(CD|cd)\s*([1-9][0-9]{8})?$/,
             fnc: 'buttonCenter'
           }
         ]
@@ -256,7 +247,8 @@ class Button {
           { label: `刷新CK`, callback: `/刷新ck` },
           { label: `刷新CD`, callback: `/刷新CD` },
         ],[
-          { label: `更新抽卡记录`, callback: `/更新抽卡记录`, style: 4 },
+          { label: `更新原神记录`, callback: `/更新抽卡记录`, style: 4 },
+          { label: `更新星铁记录`, callback: `/星铁更新抽卡记录`, style: 4 },
           { label: '获取小助手记录', callback: `/获取小助手记录`, style: 4 }
         ]
       ]

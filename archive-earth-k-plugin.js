@@ -8,7 +8,7 @@ export default class Button {
         priority: 1102,
         rule: [
             {
-                reg: '^#点歌\s*|#听\s*[1-9][0-9]?\s*|#听\s*[0-9]*$',
+                reg: /^(?:#?(?:点歌|播放)\s*.*|#?听\s*\d+|\d+)$/,
                 fnc: 'shareMusic'
             },
         ]
